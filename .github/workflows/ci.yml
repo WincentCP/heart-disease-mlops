@@ -26,7 +26,7 @@ jobs:
 
     - name: Run MLflow Project (Local Training)
       env:
-        MLFLOW_TRACKING_URI: "http://localhost:5000"
+        MLFLOW_TRACKING_URI: "file:./mlruns"
       run: |
         # Run MLflow Project without creating standard conda environment in GitHub Actions runner
         mlflow run MLProject --env-manager local --entry-point main -P n_estimators=100 -P max_depth=5
