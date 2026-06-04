@@ -9,6 +9,8 @@ on:
 jobs:
   train-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      MLFLOW_TRACKING_URI: "file://${{ github.workspace }}/mlruns"
     
     steps:
     - name: Checkout Repository
@@ -25,8 +27,6 @@ jobs:
         pip install mlflow==2.19.0 scikit-learn pandas numpy
 
     - name: Run MLflow Project (Local Training)
-      env:
-        MLFLOW_TRACKING_URI: "file:./mlruns"
       run: |
         # Run MLflow Project without creating standard conda environment in GitHub Actions runner
         mlflow run MLProject --env-manager local --entry-point main -P n_estimators=100 -P max_depth=5
