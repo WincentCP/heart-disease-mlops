@@ -29,7 +29,7 @@ jobs:
         MLFLOW_TRACKING_URI: "http://localhost:5000"
       run: |
         # Run MLflow Project without creating standard conda environment in GitHub Actions runner
-        mlflow run MLProject --no-conda --entry-point main -P n_estimators=100 -P max_depth=5
+        mlflow run MLProject --env-manager local --entry-point main -P n_estimators=100 -P max_depth=5
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
