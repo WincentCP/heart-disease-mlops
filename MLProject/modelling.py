@@ -16,8 +16,6 @@ def main():
     # MLProject executes inside conda or locally. Set tracking URI if not configured.
     if not mlflow.is_tracking_uri_set():
         mlflow.set_tracking_uri("http://localhost:5000")
-        
-    mlflow.set_experiment("Heart_Disease_Workflow_CI")
     
     with mlflow.start_run() as run:
         # Load dataset
